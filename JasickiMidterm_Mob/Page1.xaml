@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="JasickiMidterm_Mob.Page1"
+             BackgroundColor="AntiqueWhite">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key ="infostyle" TargetType="Button">
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="TextColor" Value="AntiqueWhite"/>
+                <Setter Property="FontSize" Value="45"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="Gray"/>
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key ="infostyleClearKeys" TargetType="Button">
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="BorderRadius" Value="30"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key ="infostyleOpBtn" TargetType="Button">
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="BorderRadius" Value="30"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="45"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="Yellow"/>
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key ="infostyleEq" TargetType="Button">
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="BorderRadius" Value="30"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="Orange"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Padding="5,0" RowSpacing="5" ColumnSpacing="5" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*" />
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".5*" />
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- This shows what the calculator is doing -->
+        <Label x:Name="lblN" Text="Simple Calculator" FontSize="32" TextColor="DarkTurquoise" FontAttributes="Bold" BackgroundColor="AntiqueWhite" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="5" />
+
+        <!-- This is the display of the calculator -->
+        <Entry x:Name="txtDisplay" FontSize="68" FontAttributes="Bold" BackgroundColor="AntiqueWhite" Text="0"
+              TextColor="DarkGreen"  HorizontalTextAlignment="End"  Grid.ColumnSpan="5" Grid.Row="1" />
+        
+        <!-- 4th row of the calculator -->
+        <Button Text="7" Grid.Row="2" Grid.Column="0" Clicked="NumberButton_Click" Style="{StaticResource infostyle}"/>
+        <Button Text="8" Grid.Row="2" Grid.Column="1" Clicked="NumberButton_Click" Style="{StaticResource infostyle}" />
+        <Button Text="9" Grid.Row="2" Grid.Column="2" Clicked="NumberButton_Click" Style="{StaticResource infostyle}" />
+        <Button Text="CE" Grid.Row="2" Grid.Column="3" Style="{StaticResource infostyleClearKeys}" Clicked="btnCE_Click" />
+        <Button Text="C" Grid.Row="2" Grid.Column="4" Style="{StaticResource infostyleClearKeys}" Clicked="btnClear_Click" />
+        
+        <!-- 3rd row of the calculator -->
+        <Button Text="4" Grid.Row="3" Grid.Column="0" Clicked="NumberButton_Click" Style="{StaticResource infostyle}"/>
+        <Button Text="5" Grid.Row="3" Grid.Column="1" Clicked="NumberButton_Click" Style="{StaticResource infostyle}" />
+        <Button Text="6" Grid.Row="3" Grid.Column="2" Clicked="NumberButton_Click" Style="{StaticResource infostyle}" />
+        <Button Text="x" Grid.Row="3" Grid.Column="3" Clicked="OpButton_Click" Style="{StaticResource infostyleOpBtn}" />
+        <Button Text="/" Grid.Row="3" Grid.Column="4" Clicked="OpButton_Click" Style="{StaticResource infostyleOpBtn}"/>
+        
+        <!-- 2nd row of the calculator -->
+        <Button Text="1" Grid.Row="4" Grid.Column="0" Clicked="NumberButton_Click" Style="{StaticResource infostyle}"/>
+        <Button Text="2" Grid.Row="4" Grid.Column="1" Clicked="NumberButton_Click" Style="{StaticResource infostyle}"/>
+        <Button Text="3" Grid.Row="4" Grid.Column="2" Clicked="NumberButton_Click" Style="{StaticResource infostyle}" />
+        <Button Text="-" Grid.Row="4" Grid.Column="3" Clicked="OpButton_Click" Style="{StaticResource infostyleOpBtn}" />
+        <Button Text="=" Grid.Row="4" Grid.Column="4" Clicked="btnEq_Click" Grid.RowSpan="2" Style="{StaticResource infostyleEq}"/>
+        
+        <!-- 1st row of the calculator -->
+        <Button Text="0" Grid.Row="5" Grid.Column="0" Clicked="NumberButton_Click" Grid.ColumnSpan="2" Style="{StaticResource infostyle}"/>
+        <Button Text="." Grid.Row="5" Grid.Column="2" Clicked="NumberButton_Click" Style="{StaticResource infostyle}"/>
+        <Button Text="+" x:Name ="btnPlus" Grid.Row="5" Grid.Column="3" Clicked="OpButton_Click" Style="{StaticResource infostyleOpBtn}" />
+        
+        <!-- errors warning go here-->
+        <Label x:Name="lblError" FontSize="32" TextColor="DarkTurquoise" FontAttributes="Bold" BackgroundColor="AntiqueWhite" 
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="5" Grid.Row="6" />
+    </Grid>
+</ContentPage>
